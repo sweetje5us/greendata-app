@@ -1,0 +1,217 @@
+body {
+  position: relative;
+width: 1440px;
+height: 1000px;
+
+
+background: linear-gradient(180deg, #005AC4 0%, rgba(0, 255, 25, 0.28) 100%);
+}
+.logo{
+  /* LOGO */
+
+position: absolute;
+width: 295px;
+height: 75px;
+left: 200px;
+top: 17px;
+
+
+}
+.buttonadd{
+  left: 200px;
+top: 107px;
+}
+.buttonedit{
+  position: absolute;
+width: 130px;
+height: 39px;
+left: 347px;
+top: 107px;
+}
+.buttondelete{
+  position: absolute;
+width: 130px;
+height: 39px;
+left: 494px;
+top: 107px;
+}
+button{
+/* addButton */
+
+position: absolute;
+width: 130px;
+height: 39px;
+/* Добавить */
+
+/* Description */
+font-family: Graphik LCG;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* or 171% */
+
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+
+}
+.greenbutton{
+  background: #32A87D;
+  
+  }
+  .redbutton{
+    background: #AB4C4C;
+    
+    }
+    .maintable{
+      display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+position: absolute;
+width: 1040px;
+height: 672px;
+left: 200px;
+top: 158px;
+background: #FFFFFF;
+border-radius: 8px;
+
+border-radius: 8px;
+    }
+
+tableheader{
+  position: absolute;
+width: 1040px;
+height: 48px;
+left: 0px;
+top: 0px;
+}
+thbox{
+  /* TableHeaderBox */
+
+position: absolute;
+width: 1040px;
+height: 48px;
+left: 0px;
+top: 0px;
+
+background: #FAFBFC;
+border-radius: 8px;
+
+}
+thunder{
+  /* HeaderUnderline */
+
+position: absolute;
+width: 1040px;
+height: 1px;
+left: 0px;
+top: 47px;
+
+/* Borders */
+background: #C5D0DB;
+
+}
+tablecontent{
+  display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 1040px;
+height: 615px;
+left: 0px;
+top: 48px;
+overflow-y: scroll;
+overflow-x: hidden;
+
+}
+tableitem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  position: static;
+  width: 1040px;
+  height: 104px;
+  left: 0px;
+  top: 0px;
+  
+  /* White */
+  
+  background: #FFFFFF;
+  
+  /* Inside Auto Layout */
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 0px;
+
+
+}
+footer{
+  position: absolute;
+  width: 1040px;
+  height: 24px;
+  left: 200px;
+  top: 842px;
+}
+copyrights{
+/* copyright */
+
+position: absolute;
+width: 362px;
+height: 24px;
+left: 0px;
+top: 0px;
+
+/* Description */
+font-family: Graphik LCG;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+display: flex;
+align-items: center;
+
+/* Gray 1 */
+color: #333333;
+
+
+}
+author{
+/* Тестовое задание сделал Брылев Е.В. */
+
+position: absolute;
+width: 254px;
+height: 24px;
+left: 786px;
+top: 0px;
+
+/* Description */
+font-family: Graphik LCG;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* identical to box height, or 171% */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+}
