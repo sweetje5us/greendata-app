@@ -2,7 +2,7 @@ body {
   position: relative;
 width: 1440px;
 height: 1000px;
-
+overflow-x: hidden;
 
 background: linear-gradient(180deg, #005AC4 0%, rgba(0, 255, 25, 0.28) 100%);
 }
