@@ -215,3 +215,118 @@ color: #000000;
 
 
 }
+.modalcustom{
+ /* Modalbody */
+
+ position: absolute;
+width: 277px;
+height: 792px;
+left: 35%;
+top: 57px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+
+}
+.modalheader{
+  /* nameModal */
+
+position: absolute;
+height: 53.93095397949219px;
+width: 277px;
+left: 0px;
+top: 0px;
+border-radius: [object Object]px;
+
+
+background: #0A69BB;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 8px 8px 0px 0px;
+/* Добавить запись */
+
+
+
+/* Description */
+font-family: Graphik LCG;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 24px;
+/* or 171% */
+padding-top: 15px;
+ 
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.modalcontent{
+  /* modalcontent */
+position: absolute;
+border-radius: 8px;
+height: 712px;
+width: 277px;
+left: 0px;
+top: 54px;
+border-radius: 8px;
+
+
+}
+.addbutton{
+
+height: 39px;
+width: 130px;
+left: 0px;
+top: 712px;
+border-radius: 8px;
+
+font-family: Graphik LCG;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: center;
+
+
+background: #32A87D;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+
+}
+.closebutton{
+  /* cancelButton */
+
+
+height: 39px;
+width: 130px;
+left: 147px;
+top: 712px;
+border-radius: 8px;
+font-family: Graphik LCG;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0px;
+text-align: center;
+background: #AB4C4C;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 8px;
+
+}
+.inputtext{
+  /* nameInput */
+display:flex;
+flex-direction: column;
+width:254px;
+
+
+left: 0px;
+margin-top: 15px;
+margin-left: 10px;
+border-radius: 4px;
+border-radius: 4px;
+
+}
