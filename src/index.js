@@ -181,14 +181,14 @@ class App extends Component {
             onRequestClose={this.openAddModal}
             ariaHideApp={false}
           >
-            <div >
+            <div>
               <Form
                 onSubmit={this.handleSubmit}
                 onCancel={this.closeAddModal}
               />
             </div>
           </Modal>
-          <ReactTable>
+          <ReactTable data={this.state.items}>
           </ReactTable>
           
           

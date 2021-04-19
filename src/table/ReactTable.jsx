@@ -75,9 +75,8 @@ function Table({ columns, data }) {
   )
 }
 
-function ReactTable() {
-  const columns = React.useMemo(
-    () => [
+
+  const columns = [
       {
         Header: 'id',
         accessor: (id, i) => i+1,
@@ -126,17 +125,13 @@ function ReactTable() {
          
        
      
-    ],
-    []
-  )
-
-  const data = React.useMemo(() => makeData(2000), [])
-
-  return (
+    ];
     
-      <Table columns={columns} data={data} />
-   
-  )
-}
-
-export default ReactTable
+export default class ReactTable1 extends React.Component {
+  
+  render()  {
+    return (
+      <Table columns={columns} data={this.props.data}></Table>
+    );
+    }
+  }
