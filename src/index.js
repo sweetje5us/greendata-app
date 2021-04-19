@@ -43,7 +43,8 @@ function getNewId() {
 
 class App extends Component {
   state = {
-    items: []
+    items: [],
+    selectedIds: {}
   };
       getItems = (props) => {
         let items;
@@ -157,8 +158,15 @@ class App extends Component {
           this.getItems();
         });
       };
+
+      handleSelect = (selectedIds) => {
+        this.setState({
+          selectedIds
+        })
+      }
       
  render(){
+   console.log({ selected: this.state.selectedIds })
     return (
       <>
   <img class="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
@@ -188,7 +196,7 @@ class App extends Component {
               />
             </div>
           </Modal>
-          <ReactTable data={this.state.items}>
+          <ReactTable data={this.state.items} onSelect={this.handleSelect}>
           </ReactTable>
           
           
