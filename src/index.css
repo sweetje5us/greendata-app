@@ -38,6 +38,7 @@ width: 130px;
 height: 39px;
 left: 494px;
 top: 107px;
+
 }
 button{
 /* addButton */
@@ -183,7 +184,7 @@ tableitem{
 display: flex;
 flex-direction: row;
 align-items: center;
-
+margin-left: 8px;
 
 position: static;
 width: 1040px;
@@ -198,7 +199,7 @@ background: #FFFFFF;
 flex: none;
 order: 0;
 flex-grow: 0;
-margin: 0px 0px;
+
 
 }
 footer{
@@ -374,23 +375,24 @@ border-radius: 4px;
 
 }
 th{
-  width: 86.6px;
-    height: 35px;
-    left: 4px;
-    top: 35px;
-    vertical-align: middle;
-    text-align:center;
-  
-}
-td{
-width: 86.6px;
+  width: 94.5px;
    
     left: 4px;
     top: 35px;
     vertical-align: middle;
     text-align:center;
     word-wrap: break-word;
-
+  
+}
+td{
+width: 94.5px;
+   
+    left: 4px;
+    top: 35px;
+    vertical-align: middle;
+    text-align:center;
+    word-wrap: break-word;
+    
 
 
 
