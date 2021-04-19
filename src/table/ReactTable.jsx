@@ -125,7 +125,7 @@ function Table({ columns, data, onSelect }) {
 const columns = [
       {
         Header: 'id',
-        accessor: (id, i) => i+1,
+        accessor: 'id',
       },
       {
         Header: 'Имя',
@@ -162,12 +162,7 @@ const columns = [
           {
             Header: 'наличие прав',
             accessor: 'drive_l',
-          },
-          {
-            Header: 'selected',
-            accessor: 'selected',
-            
-          },     
+          }    
     ];
 
     

@@ -4,30 +4,14 @@ import ReactDOM from 'react-dom';
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from "./modal/Form";
+import { Form1 , Form2 } from "./modal/Form";
 import { Button } from "react-bootstrap";
 import {columns, data} from "./table/const.js";
 import "./index.css";
 import ReactTable from "./table/ReactTable";
 
 
-function unselectData() {
-  const storageItems = localStorage.getItem("items");
 
-  if (storageItems) {
-    try {
-      let allitems = JSON.parse(storageItems);
-      if (Array.isArray(allitems)) {
-        allitems.forEach((element) => {
-          element.selected = false;
-        });
-        localStorage.setItem("items", JSON.stringify(allitems));
-      }
-    } catch (e) {
-      console.error(e.message);
-    }
-  }
-}
 function getNewId() {
   let allItemsString = JSON.parse(localStorage.getItem("items"));
   let maxId = 0;
@@ -45,6 +29,7 @@ class App extends Component {
   state = {
     items: [],
     selectedIds: {}
+    
   };
       getItems = (props) => {
         let items;
@@ -62,7 +47,7 @@ class App extends Component {
       };
       
       componentDidMount(props){
-        unselectData();
+       
         this.getItems();
       }
       openAddModal = () => {
@@ -70,14 +55,14 @@ class App extends Component {
       };
       closeAddModal = () => {
         this.setState({ addModalIsOpen: false });
-        unselectData();
+      
       };
       openEditModal = () => {
-        this.setState({ addModalIsOpen: true });
+        this.setState({ editModalIsOpen: true });
       };
       closeEditModal = () => {
-        this.setState({ addModalIsOpen: false });
-        unselectData();
+        this.setState({ editModalIsOpen: false });
+      
       };
       testGetValue = (value) => () => {
         this.setState({
@@ -93,80 +78,50 @@ class App extends Component {
         };
     
         let stroke = JSON.stringify(rowArray) + `]`;
-        console.log(stroke);
+        
         stroke =
           localStorage
             .getItem("items")
             .substring(0, localStorage.getItem("items").length - 1) + stroke;
         stroke = stroke.replace("}{", "},{");
         localStorage.setItem("items", stroke);
-        unselectData();
+       
     
         this.closeAddModal();
         this.getItems();
         event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
       };
-      handleDelete = (event) => {
-        Swal.fire({
-          title: "Вы уверены?",
-          text: "Записи будут удалены из таблицы!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Да, удалить запись!"
-        }).then((result) => {
-          if (result.isConfirmed) {
-            let allitems = JSON.parse(localStorage.getItem("items"));
-            var count = 0;
-            allitems.slice(0).forEach((item, index, array) => {
-              if (item.selected === true) {
-                ++count;
-                allitems.splice(allitems.indexOf(item), 1);
-              }
-    
-              localStorage.setItem("items", JSON.stringify(allitems));
-            });
-    
-            if (!allitems?.length) {
-              // localStorage.setItem("items", allitems);
-              this.setState({ deletedStroke: true });
-              Swal.fire({
-                icon: "success",
-                title: "Успешно!",
-                text: "Вы удалили все записи!"
-              });
-            } else {
-              // localStorage.setItem("items", allitems);
-              this.setState({ deletedStroke: true });
-              Swal.fire(
-                "Готово!",
-                count + " строк были успешно удалены",
-                "success"
-              );
-            }
-    
-            if (!count) {
-              this.setState({ deletedStroke: false });
-              Swal.fire({
-                icon: "error",
-                title: "Ошибка!",
-                text: "Вы не выбрали строку для удаления!"
-              });
-            }
+      handleDelete = (selectedIds) => {
+        let allitems = JSON.parse(localStorage.getItem("items"));
+        let stroke=({ selected: this.state.selectedIds });
+        allitems.forEach((item, index, array) => {
+          if (stroke.selected[index]=== true) {
+            allitems.splice(allitems.indexOf(item), 1);
           }
-          this.getItems();
         });
+        
+        localStorage.setItem("items", JSON.stringify(allitems));
+      
+          this.getItems();
       };
 
       handleSelect = (selectedIds) => {
+        
         this.setState({
-          selectedIds
-        })
-      }
+          selectedIds,
+          })
+        }
+          
+            
+        
+      
+      
+      
+      
       
  render(){
-   console.log({ selected: this.state.selectedIds })
+ 
+  
     return (
       <>
   <img class="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
@@ -175,10 +130,10 @@ class App extends Component {
     <Button className="greenbutton buttonadd" onClick={this.openAddModal}>
     Add
   </Button>
-  <Button className="greenbutton buttonedit" onClick={this.openEditModal}>
+  <Button id="editb" className="greenbutton buttonedit" onClick={this.openEditModal}>
     Edit
   </Button>
-  <Button className="redbutton buttondelete" onClick={this.handleDelete}>
+  <Button id="buttondelete" className="redbutton buttondelete" onClick={this.handleDelete}> 
     Delete
   </Button></buttongroup>
   <Modal
@@ -190,9 +145,24 @@ class App extends Component {
             ariaHideApp={false}
           >
             <div>
-              <Form
+              <Form1
                 onSubmit={this.handleSubmit}
                 onCancel={this.closeAddModal}
+              />
+            </div>
+          </Modal>
+          <Modal
+            
+          
+          className="modalcustom"
+            isOpen={this.state.editModalIsOpen}
+            onRequestClose={this.openEditModal}
+            ariaHideApp={false}
+          >
+            <div>
+              <Form2
+                onSubmit={this.handleSubmit}
+                onCancel={this.closeEditModal}
               />
             </div>
           </Modal>
