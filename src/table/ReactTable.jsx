@@ -1,117 +1,142 @@
-import React from "react";
+import { Hidden } from '@material-ui/core'
+import React from 'react'
 
-import { columns, defaultSorted } from "./const";
-import Swal from "sweetalert2";
-import { useTable } from 'react-table';
-import ReactTable from "react-table";
+import { useTable, useSortBy } from 'react-table'
+
+import makeData from './makeData'
 
 
-// изменение selected = true при выборе чекбокса
-function onSelectRow(row, isChecked, e) {
-  let allitems = JSON.parse(localStorage.getItem("items"));
+function Table({ columns, data }) {
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useSortBy
+  )
 
-  if (isChecked) {
-    allitems.forEach((element) => {
-      if (element.id === row.id) {
-        element.selected = true;
-      }
-    });
-  } else {
-    allitems.forEach((element) => {
-      if (element.id === row.id) {
-        element.selected = false;
-      }
-    });
-  }
-  localStorage.setItem("items", JSON.stringify(allitems));
+  // We don't want to render all 2000 rows for this example, so cap
+  // it at 20 for this use case
+  const firstPageRows = rows.slice(0, 20)
+
+  return (
+    <>
+    <table class="maintable" {...getTableProps()}>
+      <tableheader>
+          
+          <thbox>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                // Add the sorting props to control sorting. For this example
+                // we can add them into the header props
+                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {column.render('Header')}
+                  {/* Add a sort direction indicator */}
+                  <span>
+                    {column.isSorted
+                      ? column.isSortedDesc
+                        ? ' 🔽'
+                        : ' 🔼'
+                      : ''}
+                  </span>
+                </th>
+              ))}
+            </tr>
+          ))}
+          </thbox>
+          <thunder>
+
+          </thunder>
+      </tableheader>
+      <tablecontent {...getTableBodyProps()}>
+      {firstPageRows.map(
+            (row, i) => {
+              prepareRow(row);
+              return (
+                <tableitem {...row.getRowProps()}>
+                  {row.cells.map(cell => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    )
+                  })}
+                </tableitem>
+              )}
+          )}
+      </tablecontent>
+  </table>      
+    </>
+  )
 }
-// изменение selected = true при выборе ВСЕХ чекбоксов
-function onSelectAllRows(isChecked, row, e) {
-  let allitems = JSON.parse(localStorage.getItem("items"));
-  if (isChecked) {
-    allitems.forEach((element) => {
-      element.selected = true;
-    });
-  } else {
-    allitems.forEach((element) => {
-      element.selected = false;
-    });
-  }
-  localStorage.setItem("items", JSON.stringify(allitems));
+
+function ReactTable() {
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'id',
+        accessor: (id, i) => i+1,
+      },
+      {
+        Header: 'Имя',
+        accessor: 'name',
+          },
+          {
+            Header: 'Фамилия',
+            accessor: 'surname',
+          },
+          {
+            Header: 'Отчество',
+            accessor: 'lastname',
+          },
+          {
+            Header: 'должность',
+            accessor: 'position',
+          },
+          {
+            Header: 'дата рождения',
+            accessor: 'bdate',
+          },
+          {
+            Header: 'пол',
+            accessor: 'sex',
+          },
+          {
+            Header: 'дата приема',
+            accessor: 'hdate',
+          },
+          {
+            Header: 'дата увольнения',
+            accessor: 'fdate',
+          },
+          {
+            Header: 'наличие прав',
+            accessor: 'drive_l',
+          },
+          {
+            Header: 'selected',
+            accessor: 'selected',
+            
+          },
+         
+       
+     
+    ],
+    []
+  )
+
+  const data = React.useMemo(() => makeData(2000), [])
+
+  return (
+    
+      <Table columns={columns} data={data} />
+   
+  )
 }
 
-const selectRowProp = {
-  mode: "checkbox",
-  clickToSelect: false,
-  unselectable: [2],
-  selected: [0],
-  onSelect: onSelectRow,
-  onSelectAll: onSelectAllRows,
-  bgColor: "lightgreen"
-};
-
-export default class Table extends React.Component {
- 
- 
-  render() {
-    return (
-      <ReactTable
-      data={this.props.data}
-      columns={[
-        {
-          Header: "First Name",
-          accessor: "firstName",
-          className: "sticky",
-          headerClassName: "sticky"
-        },
-        {
-          Header: "Last Name",
-          id: "lastName",
-          accessor: d => d.lastName
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Age",
-          accessor: "age"
-        },
-        {
-          Header: "Status",
-          accessor: "status"
-        },
-        {
-          Header: "Visits",
-          accessor: "visits"
-        }
-      ]}
-      defaultPageSize={10}
-      className="-striped -highlight"
-    />
-        
-        
-      
-    );
-  }
-}
+export default ReactTable

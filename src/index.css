@@ -72,7 +72,7 @@ border-radius: 8px;
     background: #AB4C4C;
     
     }
-    .maintable{
+    table{
       display: flex;
 flex-direction: column;
 align-items: flex-start;
@@ -89,7 +89,7 @@ border-radius: 8px;
 border-radius: 8px;
     }
 
-tableheader{
+thead{
   position: absolute;
 width: 1040px;
 height: 48px;
@@ -98,12 +98,16 @@ top: 0px;
 }
 thbox{
   /* TableHeaderBox */
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: static;
 position: absolute;
 width: 1040px;
 height: 48px;
-left: 0px;
-top: 0px;
+
+
+
 
 background: #FAFBFC;
 border-radius: 8px;
@@ -129,7 +133,7 @@ align-items: center;
 padding: 0px;
 
 position: absolute;
-width: 1040px;
+
 height: 615px;
 left: 0px;
 top: 48px;
@@ -138,27 +142,29 @@ overflow-x: hidden;
 
 }
 tableitem{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  
-  position: static;
-  width: 1040px;
-  height: 104px;
-  left: 0px;
-  top: 0px;
-  
-  /* White */
-  
-  background: #FFFFFF;
-  
-  /* Inside Auto Layout */
-  
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 0px;
 
+  /* FirstItem */
+
+/* Auto Layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+
+
+position: static;
+width: 1040px;
+height: 104px;
+left: 0px;
+top: 0px;
+
+/* White */
+background: #FFFFFF;
+
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 0px;
 
 }
 footer{
@@ -329,4 +335,33 @@ margin-left: 10px;
 border-radius: 4px;
 border-radius: 4px;
 
+}
+th{
+  width: 95px;
+    height: 35px;
+    left: 4px;
+    top: 35px;
+    vertical-align: middle;
+    text-align:center;
+}
+td{
+
+  /* Rectangle 3 */
+
+
+/* Rectangle 3 */
+
+text-align:center;
+width: 100px;
+height: 35px;
+left: 4px;
+top: 35px;
+overflow: hidden;
+white-space: nowrap;
+
+
+
+}
+tr{
+  
 }

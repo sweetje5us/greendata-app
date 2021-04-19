@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "./modal/Form";
 import { Button } from "react-bootstrap";
-
+import {columns, data} from "./table/const.js";
 import "./index.css";
 import ReactTable from "./table/ReactTable";
 
@@ -188,41 +188,11 @@ class App extends Component {
               />
             </div>
           </Modal>
+          <ReactTable>
+          </ReactTable>
           
-  <table class="maintable">
-      <tableheader>
           
-          <thbox>
-
-          </thbox>
-          <thunder>
-
-          </thunder>
-      </tableheader>
-      <tablecontent>
-          <tableitem>
-
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-          <tableitem>
-              
-          </tableitem>
-      </tablecontent>
-  </table>
+  
   <footer>
       <copyrights>
       © GreenData|2014-2021
