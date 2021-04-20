@@ -70,25 +70,23 @@ function Table({ columns, data, onSelect }) {
   useEffect(() => {
     onSelect(selectedRowIds)
   }, [selectedRowIds, onSelect])
- 
+
   return (
     <>
       <table class="maintable" {...getTableProps()}>
-      <tableheader>
-      <thbox>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
+        <tableheader>
+          <thbox>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                ))}
+              </tr>
+            ))}
           </thbox>
-          <thunder>
-
-//         </thunder>
-       </tableheader>
-       <tablecontent {...getTableBodyProps()}>
+          <thunder />
+        </tableheader>
+        <tablecontent {...getTableBodyProps()}>
           {rows.slice(0, 10).map((row, i) => {
             prepareRow(row)
             return (
@@ -101,21 +99,7 @@ function Table({ columns, data, onSelect }) {
           })}
         </tablecontent>
       </table>
-      {/* <p>Selected Rows: {Object.keys(selectedRowIds).length}</p>
-     <pre>
-        <code>
-          {JSON.stringify(
-            {
-              selectedRowIds,
-              'Выделенные строки': selectedFlatRows.map(
-                d => d.original
-              ),
-            },
-            null,
-            2
-          )}
-        </code>
-        </pre> */}
+
     </>
 
   )
@@ -123,53 +107,53 @@ function Table({ columns, data, onSelect }) {
 
 
 const columns = [
-      {
-        Header: 'id',
-        accessor: 'id',
-      },
-      {
-        Header: 'Имя',
-        accessor: 'name',
-          },
-          {
-            Header: 'Фамилия',
-            accessor: 'surname',
-          },
-          {
-            Header: 'Отчество',
-            accessor: 'lastname',
-          },
-          {
-            Header: 'должность',
-            accessor: 'position',
-          },
-          {
-            Header: 'дата рождения',
-            accessor: 'bdate',
-          },
-          {
-            Header: 'пол',
-            accessor: 'sex',
-          },
-          {
-            Header: 'дата приема',
-            accessor: 'hdate',
-          },
-          {
-            Header: 'дата увольнения',
-            accessor: 'fdate',
-          },
-          {
-            Header: 'наличие прав',
-            accessor: 'drive_l',
-          }    
-    ];
+  {
+    Header: 'id',
+    accessor: 'id',
+  },
+  {
+    Header: 'Имя',
+    accessor: 'name',
+  },
+  {
+    Header: 'Фамилия',
+    accessor: 'surname',
+  },
+  {
+    Header: 'Отчество',
+    accessor: 'lastname',
+  },
+  {
+    Header: 'должность',
+    accessor: 'position',
+  },
+  {
+    Header: 'дата рождения',
+    accessor: 'bdate',
+  },
+  {
+    Header: 'пол',
+    accessor: 'sex',
+  },
+  {
+    Header: 'дата приема',
+    accessor: 'hdate',
+  },
+  {
+    Header: 'дата увольнения',
+    accessor: 'fdate',
+  },
+  {
+    Header: 'наличие прав',
+    accessor: 'drive_l',
+  }
+];
 
-    
-    
+
+
 export default class ReactTable1 extends React.Component {
-  
-  render()  {
+
+  render() {
     const { data, onSelect } = this.props
     return (
       <Table columns={columns} data={data} onSelect={onSelect} ></Table>
