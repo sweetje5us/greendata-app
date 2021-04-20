@@ -22,6 +22,10 @@ function getNewId() {
   });
   return ++maxId;
 }
+function getOldId() {
+  
+
+}
 
 
 
@@ -60,12 +64,11 @@ class App extends Component {
       openEditModal = (selectedIds) => {
         let allitems = JSON.parse(localStorage.getItem("items"));
           let stroke=({ selected: this.state.selectedIds });
-          let count=0;
+          let count=(Object.keys(stroke.selected).length);
+          
           allitems.forEach((item, index, array) => {
             if (stroke.selected[index]!== true) {
               allitems.splice(allitems.indexOf(item), 1);
-            } else{
-              count++;
             }
         });
         if (count===1){
@@ -74,11 +77,11 @@ class App extends Component {
         }
         else if (count>1){
           alert('Выберите только 1 запись');
-          count=0;
+          
         }
         else if (count===0){
           alert('Выберите минимум 1 запись');
-          count=0;
+          
         }
       };
       closeEditModal = () => {
@@ -94,7 +97,6 @@ class App extends Component {
         let rowArray = {
           ...person,
           drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
-          selected: Boolean(person.selected),
           id: person.id ? person.id : getNewId()
         };
     
@@ -112,6 +114,37 @@ class App extends Component {
         this.getItems();
         event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
       };
+
+      handleSubmitEdit = (person) => (event) => {
+        let rowArray = {
+          ...person,
+          drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
+        };
+        let allitems = JSON.parse(localStorage.getItem("items"));
+        let stroke=({ selected: this.state.selectedIds });
+        allitems.forEach((item, index, array) => {
+          if (stroke.selected[index]=== true) {
+            
+            allitems[index].name=rowArray.name;
+            allitems[index].surname=rowArray.surname;
+            allitems[index].lastname=rowArray.lastname;
+            allitems[index].position=rowArray.position;
+            allitems[index].bdate=rowArray.bdate;
+            allitems[index].sex=rowArray.sex;
+            allitems[index].fdate=rowArray.fdate;
+            allitems[index].hdate=rowArray.hdate;
+            allitems[index].drive_l=rowArray.drive_l;
+          }
+        });
+
+           
+        
+        localStorage.setItem("items", JSON.stringify(allitems)); 
+        this.closeEditModal();
+        this.getItems();
+        event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
+      };
+
       handleDelete = (selectedIds) => {
         let allitems = JSON.parse(localStorage.getItem("items"));
         let stroke=({ selected: this.state.selectedIds });
@@ -184,7 +217,7 @@ class App extends Component {
           >
             <div>
               <Form2 
-                onSubmit={this.handleSubmit}
+                onSubmit={this.handleSubmitEdit}
                 onCancel={this.closeEditModal}
                 editPerson={this.state.selectedIds}
               />

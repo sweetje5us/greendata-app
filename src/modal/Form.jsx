@@ -1,7 +1,5 @@
 import React, { useCallback, useState, useEffect  } from "react";
 import { Form, Button } from "react-bootstrap";
-import {MDCRadio} from '@material/radio';
-import { getByText } from "@testing-library/dom";
 
 
 
@@ -12,6 +10,8 @@ var dd = String(today.getDate()).padStart(2, "0");
 var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
+
+
 
 export const Form1 = (props) => {
     const { onSubmit, onCancel,  } = props;
@@ -51,7 +51,7 @@ export const Form1 = (props) => {
         };
       });
     }, []);
-  console.log(props.editPerson)
+ 
     return (
       <>
       <div class="allModal">
@@ -251,9 +251,10 @@ export const Form1 = (props) => {
   };
   
   export const Form2 = (props) => {
-    const { onSubmit, onCancel } = props;
+    const { onSubmit, onCancel} = props;
     const [person, setPerson] = useState({ ...props.editPerson })
     useEffect(() => { setPerson({ ...props.editPerson }) }, [props.editPerson])
+
     //получаем значение input'ов
     const handleChange = useCallback((event) => {
       setPerson((person) => {
@@ -277,6 +278,7 @@ export const Form1 = (props) => {
         };
       });
     }, []);
+    // console.log(props.editPerson);
     return (
       <>
       <div class="allModal">
@@ -462,7 +464,7 @@ export const Form1 = (props) => {
               inline
             />
           </Form.Group>
-          <Button className="addbutton" type="submit">
+          <Button className="addbutton" type="submit" >
             Изменить
           </Button>
           <Button className="closebutton" type="button" onClick={onCancel}>

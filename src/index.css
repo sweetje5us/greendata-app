@@ -234,7 +234,7 @@ color: #333333;
 
 }
 tableitem:hover{
-  background: #e4e5e6;
+  background: #f5f5f5;
 }
 author{
 /* Тестовое задание сделал Брылев Е.В. */
@@ -380,8 +380,17 @@ th{
     left: 4px;
     top: 35px;
     vertical-align: middle;
-    text-align:center;
+   
     word-wrap: break-word;
+font-family: Graphik LCG;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0px;
+text-align: center;
+text-color: #747E8A;
+
   
 }
 td{
@@ -390,19 +399,17 @@ width: 94.5px;
     left: 4px;
     top: 35px;
     vertical-align: middle;
-    text-align:center;
-    word-wrap: break-word;
-    
-
-
-
-}
-td:hover{
-  
-  overflow:visible;
    
+    word-wrap: break-word;
+    font-family: Graphik LCG;
+font-size: 13px;
+font-style: normal;
 
-}
-tr{
-  
+line-height: 16px;
+letter-spacing: 0px;
+text-align: center;
+text-color: #747E8A;
+
+
+
 }
