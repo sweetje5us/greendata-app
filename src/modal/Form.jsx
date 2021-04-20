@@ -1,6 +1,8 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect  } from "react";
 import { Form, Button } from "react-bootstrap";
 import {MDCRadio} from '@material/radio';
+import { getByText } from "@testing-library/dom";
+
 
 
 var today = new Date();
@@ -12,11 +14,11 @@ var yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
 
 export const Form1 = (props) => {
-    const { onSubmit, onCancel } = props;
-    const [person, setPerson] = useState({
+    const { onSubmit, onCancel,  } = props;
+    const [person, setPerson, editPerson ] = useState({
       id: "",
       name: "",
-      surname: "",
+      surname: "",  
       lastname: "",
       position: "",
       bdate: "",
@@ -25,6 +27,7 @@ export const Form1 = (props) => {
       hdate: "",
       drive_l: ""
     });
+    
     //получаем значение input'ов
     const handleChange = useCallback((event) => {
       setPerson((person) => {
@@ -48,7 +51,7 @@ export const Form1 = (props) => {
         };
       });
     }, []);
-  
+  console.log(props.editPerson)
     return (
       <>
       <div class="allModal">
@@ -249,18 +252,8 @@ export const Form1 = (props) => {
   
   export const Form2 = (props) => {
     const { onSubmit, onCancel } = props;
-    const [person, setPerson] = useState({
-      id: "",
-      name: "",
-      surname: "",
-      lastname: "",
-      position: "",
-      bdate: "",
-      sex: "",
-      fdate: "",
-      hdate: "",
-      drive_l: ""
-    });
+    const [person, setPerson] = useState({ ...props.editPerson })
+    useEffect(() => { setPerson({ ...props.editPerson }) }, [props.editPerson])
     //получаем значение input'ов
     const handleChange = useCallback((event) => {
       setPerson((person) => {
@@ -284,12 +277,10 @@ export const Form1 = (props) => {
         };
       });
     }, []);
-  
     return (
       <>
       <div class="allModal">
       <div class="modalheader">Режим изменения записи</div>
-        
   <div class="modalcontent">
         <Form onSubmit={onSubmit(person)}>
           <Form.Group
@@ -306,6 +297,7 @@ export const Form1 = (props) => {
               type="text"
               required={true}
               value={person.name}
+             
               onChange={handleChange}
               pattern="[A-Za-zА-Яа-яЁё]{2,20}"
             />

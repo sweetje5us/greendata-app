@@ -57,8 +57,29 @@ class App extends Component {
         this.setState({ addModalIsOpen: false });
       
       };
-      openEditModal = () => {
-        this.setState({ editModalIsOpen: true });
+      openEditModal = (selectedIds) => {
+        let allitems = JSON.parse(localStorage.getItem("items"));
+          let stroke=({ selected: this.state.selectedIds });
+          let count=0;
+          allitems.forEach((item, index, array) => {
+            if (stroke.selected[index]!== true) {
+              allitems.splice(allitems.indexOf(item), 1);
+            } else{
+              count++;
+            }
+        });
+        if (count===1){
+          this.setState({ editModalIsOpen: true });
+
+        }
+        else if (count>1){
+          alert('Выберите только 1 запись');
+          count=0;
+        }
+        else if (count===0){
+          alert('Выберите минимум 1 запись');
+          count=0;
+        }
       };
       closeEditModal = () => {
         this.setState({ editModalIsOpen: false });
@@ -110,8 +131,9 @@ class App extends Component {
         this.setState({
           selectedIds,
           })
-        }
           
+          
+      }
             
         
       
@@ -158,11 +180,13 @@ class App extends Component {
             isOpen={this.state.editModalIsOpen}
             onRequestClose={this.openEditModal}
             ariaHideApp={false}
+            
           >
             <div>
-              <Form2
+              <Form2 
                 onSubmit={this.handleSubmit}
                 onCancel={this.closeEditModal}
+                editPerson={this.state.selectedIds}
               />
             </div>
           </Modal>
