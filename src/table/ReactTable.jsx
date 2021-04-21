@@ -54,7 +54,6 @@ function Table({ columns, data, onSelect }) {
     headerGroups,
     rows,
     prepareRow,
-    useSortuseRowSelectBy,
     selectedFlatRows,
     state: { selectedRowIds },
   } = useTable(
