@@ -1,45 +1,63 @@
-// import namor from 'namor';
+import namor from 'namor';
 
-// const range = len => {
-//   const arr = []
-//   for (let i = 0; i < len; i++) {
-//     arr.push(i)
-//   }
-//   return arr
-// }
+const range = len => {
+  const arr = []
+  for (let i = 0; i < len; i++) {
+    arr.push(i)
+  }
+  return arr
+}
 
-// // const newPerson = () => {
-// //   const sexChance = Math.random()
-// //   const driveChance = Math.random()
-// //   return {
-    
-// //     name: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
-// //     surname: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
-// //     lastname: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
-// //     position: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
-// //     bdate: namor.generate({ words:0, numbers: 4, saltLength: 0 }) + "-"+ namor.generate({ words:0, numbers: 2, saltLength: 0 })+ "-"+ namor.generate({ words:0, numbers: 2, saltLength: 0 }),
-// //     sex: sexChance > 0.66
-// //         ? 'Мужчина'
-// //         : 'Женщина',
-// //     fdate:false,
-// //     hdate:false,
-// //     drive_l:driveChance > 0.66
-// //     ? 'Да'
-// //     : 'Нет',
-// //     selected: "false",
-// //   }
-// // }
 
-// export default function makeData(...lens) {
-//   const makeDataLevel = (depth = 0) => {
-//     const len = lens[depth]
-//     return range(len).map(d => {
-//       return {
-//         ...newPerson(),
-//         subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-//       }
-//     })
-//   }
+function randomDate(start, end) {
+  let date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  let dd = String(date.getDate()).padStart(2, "0");
+let mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
+let yyyy = date.getFullYear();
+  
+  return date=yyyy + "-" + mm + "-" + dd
+}
+var id = 0;
+const newPerson = () => {
+  const sexChance = Math.random()
+  const driveChance = Math.random()
+  const fdateChance = Math.random()
+  const positionChance = Math.random()
+  id++;
+  return {
+    id: id,
+    name: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
+    surname: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
+    lastname: namor.generate({ words: 1, numbers: 0, saltLength: 0 }),
+    position: positionChance > 0.66
+    ? 'Тамада'
+    : positionChance > 0.33
+    ? 'Дизайнер'
+    : 'Старший охранник',
+    bdate: randomDate(new Date(1950, 0, 1), new Date(2003,0,1)),
+    sex: sexChance > 0.5
+        ? 'Мужчина'
+        : 'Женщина',
+    hdate:randomDate(new Date(2000, 0, 1), new Date(2019,0,1)),
+    fdate:fdateChance > 0.66
+    ? randomDate(new Date(2019, 0, 1), new Date())
+    : '',
+    drive_l:driveChance > 0.5
+    ? 'Да'
+    : 'Нет',
+  }
+}
 
-//   return makeDataLevel()
-// }
+export default function makeData(...lens) {
+  const makeDataLevel = (depth = 0) => {
+    const len = lens[depth]
+    return range(len).map(d => {
+      return {
+        ...newPerson(),
+        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
+      }
+    })
+  }
+
+  return makeDataLevel()
+}

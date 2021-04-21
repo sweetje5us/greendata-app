@@ -32,16 +32,20 @@ const getSelectionColumns = (hooks) => {
       // The header can use the table's getToggleAllRowsSelectedProps method
       // to render a checkbox
       Header: ({ getToggleAllRowsSelectedProps }) => (
-        <th>
+        <th1>
           <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
-        </th>
+
+        </th1>
       ),
       // The cell can use the individual row's getToggleRowSelectedProps method
       // to the render a checkbox
       Cell: ({ row }) => (
+
         <td>
           <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
         </td>
+
+
       ),
     },
     ...columns,
@@ -68,7 +72,12 @@ function Table({ columns, data, onSelect }) {
   )
 
   useEffect(() => {
-    onSelect(selectedRowIds)
+    const selectedIds = selectedFlatRows.reduce((acc, { original }) => ({
+      ...acc,
+      [original.id]: true
+    }), {})
+    onSelect(selectedIds)
+
   }, [selectedRowIds, onSelect])
 
   return (
@@ -87,11 +96,12 @@ function Table({ columns, data, onSelect }) {
           <thunder />
         </tableheader>
         <tablecontent {...getTableBodyProps()}>
-          {rows.slice(0, 10).map((row, i) => {
+          {rows.map((row, i) => {
             prepareRow(row)
             return (
-              <tableitem {...row.getRowProps()}>
+              <tableitem id={i} {...row.getRowProps()}>
                 {row.cells.map(cell => {
+
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tableitem>

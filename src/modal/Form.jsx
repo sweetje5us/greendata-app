@@ -278,7 +278,6 @@ export const Form2 = (props) => {
       };
     });
   }, []);
-  // console.log(props.editPerson);
   return (
     <>
       <div class="allModal">
@@ -430,10 +429,10 @@ export const Form2 = (props) => {
             </Form.Label>
               <Form.Control
                 type="date"
-                name="fdate"
+                name="hdate"
                 min={firstday}
                 max={today}
-                value={person.fdate}
+                value={person.hdate}
                 onChange={handleChange}
                 required={true}
               />
@@ -445,11 +444,11 @@ export const Form2 = (props) => {
             </Form.Label>
               <Form.Control
                 type="date"
-                name="hdate"
+                name="fdate"
 
                 min={person.fdate}
                 max={today}
-                value={person.hdate}
+                value={person.fdate}
                 disabled={!person.fdate}
                 onChange={handleChange}
               />

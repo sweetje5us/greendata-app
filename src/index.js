@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form1, Form2 } from "./modal/Form";
 import { Button } from "react-bootstrap";
+import makedata from "./table/makeData"
 import { columns, data } from "./table/const.js";
 import "./index.css";
 import ReactTable from "./table/ReactTable";
@@ -22,17 +23,13 @@ function getNewId() {
   });
   return ++maxId;
 }
-function getOldId() {
-
-
-}
-
-
 
 class App extends Component {
   state = {
     items: [],
-    selectedIds: {}
+    selectedIds: {},
+    addModalIsOpen: false,
+    editModalIsOpen: false
 
   };
 
@@ -51,28 +48,22 @@ class App extends Component {
     this.setState({ items });
   };
 
-  componentDidMount(props) {
-
+  componentDidMount() {
     this.getItems();
   }
+
   openAddModal = () => {
     this.setState({ addModalIsOpen: true });
   };
+
   closeAddModal = () => {
     this.setState({ addModalIsOpen: false });
 
   };
-  openEditModal = (selectedIds) => {
-    let allitems = JSON.parse(localStorage.getItem("items"));
-    let stroke = ({ selected: this.state.selectedIds });
-    let count = (Object.keys(stroke.selected).length);
 
-    allitems.forEach((item, index, array) => {
-      if (stroke.selected[index] !== true) {
-        allitems.splice(allitems.indexOf(item), 1);
-      }
-    });
-
+  openEditModal = () => {
+    const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key]);
+    const count = selectedIdsList.length;
     if (count > 1) {
       alert('Выберите только 1 запись');
     }
@@ -83,37 +74,41 @@ class App extends Component {
       this.setState({ editModalIsOpen: true });
     }
   };
+
+  getEditPerson = () => {
+    const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
+    const editId = selectedIdsList[0]
+    return this.state.items.find(({ id }) => String(id) === String(editId))
+  }
+
   closeEditModal = () => {
     this.setState({ editModalIsOpen: false });
 
   };
+
   testGetValue = (value) => () => {
     this.setState({
       sex: value
     });
   };
+
   handleSubmit = (person) => (event) => {
     let rowArray = {
       ...person,
       drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
       id: person.id ? person.id : getNewId()
     };
-
     let stroke = JSON.stringify(rowArray) + `]`;
-
     stroke =
       localStorage
         .getItem("items")
         .substring(0, localStorage.getItem("items").length - 1) + stroke;
     stroke = stroke.replace("}{", "},{");
     localStorage.setItem("items", stroke);
-
-
     this.closeAddModal();
     this.getItems();
     event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
   };
-
 
   handleSubmitEdit = (person) => (event) => {
     let rowArray = {
@@ -121,21 +116,15 @@ class App extends Component {
       drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
     };
     let allitems = JSON.parse(localStorage.getItem("items"));
-    let stroke = ({ selected: this.state.selectedIds });
+    let stroke = ({ id: this.state.selectedIds });
     allitems.forEach((item, index, array) => {
-      if (stroke.selected[index] === true) {
-
-        allitems[index].name = rowArray.name;
-        allitems[index].surname = rowArray.surname;
-        allitems[index].lastname = rowArray.lastname;
-        allitems[index].position = rowArray.position;
-        allitems[index].bdate = rowArray.bdate;
-        allitems[index].sex = rowArray.sex;
-        allitems[index].fdate = rowArray.fdate;
-        allitems[index].hdate = rowArray.hdate;
-        allitems[index].drive_l = rowArray.drive_l;
+      if (allitems[index].id === JSON.parse(Object.keys(stroke.id))) {
+        allitems[index] = rowArray;
       }
     });
+
+
+
 
 
 
@@ -145,27 +134,29 @@ class App extends Component {
     event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
   };
 
-  handleDelete = (selectedIds) => {
-    let allitems = JSON.parse(localStorage.getItem("items"));
-    let stroke = ({ selected: this.state.selectedIds });
-    allitems.forEach((item, index, array) => {
-      if (stroke.selected[index] === true) {
-        allitems.splice(allitems.indexOf(item), 1);
-      }
-    });
+  handleDelete = () => {
+    const allitems = this.state.items;
+   
+    const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
+    const clinedList = allitems.reduce((acc, person) => {
+    if(!selectedIdsList.includes(String(person.id))) { 
+    acc.push(person) 
+    } 
+    return acc 
+}, [])
 
-    localStorage.setItem("items", JSON.stringify(allitems));
-
+    localStorage.setItem("items", JSON.stringify(clinedList));
     this.getItems();
   };
 
   handleSelect = (selectedIds) => {
-
     this.setState({
       selectedIds,
     })
-
-
+  }
+  handleRandom = ()=>{
+localStorage.setItem("items",JSON.stringify(makedata(20)));
+this.getItems();
   }
 
 
@@ -175,7 +166,6 @@ class App extends Component {
 
 
   render() {
-
 
     return (
       <>
@@ -191,10 +181,11 @@ class App extends Component {
           <Button id="buttondelete" className="redbutton buttondelete" onClick={this.handleDelete}>
             Delete
           </Button>
+          <Button id="buttonrandom" className="greenbutton buttonrandom" onClick={this.handleRandom}>
+            Random data
+          </Button>
         </buttongroup>
         <Modal
-
-
           className="modalcustom"
           isOpen={this.state.addModalIsOpen}
           onRequestClose={this.openAddModal}
@@ -208,28 +199,22 @@ class App extends Component {
           </div>
         </Modal>
         <Modal
-
-
           className="modalcustom"
           isOpen={this.state.editModalIsOpen}
           onRequestClose={this.openEditModal}
           ariaHideApp={false}
-
         >
           <div>
             <Form2
               onSubmit={this.handleSubmitEdit}
               onCancel={this.closeEditModal}
-              editPerson={this.state.selectedIds}
+              // editPerson={this.state.selectedIds}
+              editPerson={this.state.editModalIsOpen && this.getEditPerson()}
             />
           </div>
         </Modal>
         <ReactTable data={this.state.items} onSelect={this.handleSelect}>
         </ReactTable>
-
-
-
-
         <footer>
           <copyrights>
             © GreenData|2014-2021
