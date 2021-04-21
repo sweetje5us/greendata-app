@@ -1,7 +1,7 @@
 {
   "name": "greendata-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.0.1",
     "@material/radio": "^11.0.0",
