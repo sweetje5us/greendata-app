@@ -333,6 +333,7 @@ root {
   }
 }
 
+
 .modalheader {
   /* nameModal */
 
@@ -462,7 +463,6 @@ th {
   line-height: 16px;
   letter-spacing: 0px;
   text-align: center;
-  text-color: #747E8A;
 
 
 }
@@ -482,7 +482,6 @@ td {
   line-height: 16px;
   letter-spacing: 0px;
   text-align: center;
-  text-color: #747E8A;
 
 
 

@@ -1,11 +1,5 @@
-
 import React, { useEffect } from 'react';
-import ReactDOM from "react-dom";
-
 import { useTable, useSortuseRowSelectBy, useRowSelect } from 'react-table'
-
-
-
 
 // Добавляем Столбец с чекбоксами
 const IndeterminateCheckbox = React.forwardRef(

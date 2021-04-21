@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import ReactDOM from 'react-dom';
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form1, Form2 } from "./modal/Form";
 import { Button } from "react-bootstrap";
 import makedata from "./table/makeData"
-import { columns, data } from "./table/const.js";
 import "./index.css";
 import ReactTable from "./table/ReactTable";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
