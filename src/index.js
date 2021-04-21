@@ -10,6 +10,8 @@ import makedata from "./table/makeData"
 import { columns, data } from "./table/const.js";
 import "./index.css";
 import ReactTable from "./table/ReactTable";
+import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
+
 
 
 
@@ -65,10 +67,18 @@ class App extends Component {
     const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key]);
     const count = selectedIdsList.length;
     if (count > 1) {
-      alert('Выберите только 1 запись');
+      Swal.fire({
+        icon: 'error',
+        title: 'Ошибка!',
+        text: 'Вы выбрали больше одной строки!',
+      })
     }
     if (count === 0) {
-      alert('Выберите минимум 1 запись');
+      Swal.fire({
+        icon: 'error',
+        title: 'Ошибка!',
+        text: 'Вы не выбрали строку!',
+      })
     }
     if (count === 1) {
       this.setState({ editModalIsOpen: true });
@@ -105,12 +115,28 @@ class App extends Component {
         .substring(0, localStorage.getItem("items").length - 1) + stroke;
     stroke = stroke.replace("}{", "},{");
     localStorage.setItem("items", stroke);
+    Swal.fire(
+      'Готово!',
+      'Добавление прошло успешно.',
+      'success'
+    )
     this.closeAddModal();
     this.getItems();
     event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
   };
 
   handleSubmitEdit = (person) => (event) => {
+    Swal.fire({
+      title: 'Вы уверены?',
+      text: "Запись будет изменена!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Отмена',
+      confirmButtonText: 'Да, изменить!'
+    }).then((result) => {
+      if (result.isConfirmed) {
     let rowArray = {
       ...person,
       drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
@@ -129,41 +155,88 @@ class App extends Component {
 
 
     localStorage.setItem("items", JSON.stringify(allitems));
-    this.closeEditModal();
+    Swal.fire(
+      'Готово!',
+      'Изменение прошло успешно.',
+      'success'
+    )
     this.getItems();
-    event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
+    this.closeEditModal();
+  }}
+  )
+    
+event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
+    
+    
   };
 
   handleDelete = () => {
-    const allitems = this.state.items;
+    
+    Swal.fire({
+      title: 'Вы уверены?',
+      text: "Выбранные записи будут удалены!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Отмена',
+      confirmButtonText: 'Да, удалить!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const allitems = this.state.items;
    
-    const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
-    const clinedList = allitems.reduce((acc, person) => {
-    if(!selectedIdsList.includes(String(person.id))) { 
-    acc.push(person) 
-    } 
-    return acc 
-}, [])
-
-    localStorage.setItem("items", JSON.stringify(clinedList));
+        const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
+        if (selectedIdsList.length!== 0){
+        const clinedList = allitems.reduce((acc, person) => {
+          if(!selectedIdsList.includes(String(person.id))) { 
+          acc.push(person) 
+          } 
+          return acc 
+      }, [])
+      localStorage.setItem("items", JSON.stringify(clinedList));
     this.getItems();
+        Swal.fire(
+          'Готово!',
+          'Удаление прошло успешно.',
+          'success'
+        )
+      }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Ошибка!',
+        text: 'Вы не выбрали строку для удаления!',
+      })
+    }}
+    })
+    
+
   };
 
   handleSelect = (selectedIds) => {
     this.setState({
       selectedIds,
     })
+    
   }
   handleRandom = ()=>{
+    Swal.fire({
+      title: 'Вы уверены?',
+      text: "Таблица будет очищена и заполнена случайными данными!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Отмена',
+      confirmButtonText: 'Да, заполнить!'
+    }).then((result) => {
+      if (result.isConfirmed) {
 localStorage.setItem("items",JSON.stringify(makedata(20)));
 this.getItems();
   }
-
-
-
-
-
-
+}
+    )
+}
 
   render() {
 
@@ -172,17 +245,17 @@ this.getItems();
         <img class="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
         </img>
         <buttongroup>
-          <Button className="greenbutton buttonadd" onClick={this.openAddModal}>
-            Add
+          <Button className="btn-success greenbutton buttonadd" onClick={this.openAddModal}>
+            Добавить
           </Button>
-          <Button id="editb" className="greenbutton buttonedit" onClick={this.openEditModal}>
-            Edit
+          <Button id="editb" className="btn-success greenbutton buttonedit" onClick={this.openEditModal}>
+            Изменить
           </Button>
-          <Button id="buttondelete" className="redbutton buttondelete" onClick={this.handleDelete}>
-            Delete
+          <Button id="buttondelete" className="btn-danger redbutton buttondelete" onClick={this.handleDelete}>
+            Удалить
           </Button>
-          <Button id="buttonrandom" className="greenbutton buttonrandom" onClick={this.handleRandom}>
-            Random data
+          <Button id="buttonrandom" className="btn-warning buttonrandom" onClick={this.handleRandom}>
+            Заполнить
           </Button>
         </buttongroup>
         <Modal
@@ -213,8 +286,23 @@ this.getItems();
             />
           </div>
         </Modal>
+        <ContextMenuTrigger id="same_unique_identifier">
         <ReactTable data={this.state.items} onSelect={this.handleSelect}>
         </ReactTable>
+        
+      </ContextMenuTrigger>
+
+      <ContextMenu id="same_unique_identifier">
+        <MenuItem data={{id: '1'}} onClick={this.openEditModal} >
+          Изменить
+        </MenuItem>
+        <MenuItem data={{id: '2'}} onClick={this.handleDelete}>
+          Удалить
+        </MenuItem>
+        <MenuItem data={{id: '2'}} onClick={this.Close}>
+          Закрыть меню
+        </MenuItem>
+      </ContextMenu>
         <footer>
           <copyrights>
             © GreenData|2014-2021

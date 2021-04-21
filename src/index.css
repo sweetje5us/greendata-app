@@ -56,9 +56,7 @@ body {
 button {
   /* addButton */
 
-  position: absolute;
-  width: 130px;
-  height: 39px;
+
   /* Добавить */
 
   /* Description */
@@ -84,12 +82,16 @@ button {
 }
 
 .greenbutton {
+  position: absolute;
+  width: 130px;
+  height: 39px;
   background: #32A87D;
 
 }
 
 .redbutton {
   background: #AB4C4C;
+
 
 }
 
@@ -313,7 +315,7 @@ author {
 
   position: absolute;
   width: 277px;
-  height: 792px;
+  height: 870px;
   left: 35%;
   top: 57px;
 
@@ -321,6 +323,14 @@ author {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 
+}
+
+root {
+
+  color: green[400],
+  '&$checked': {
+    color: green[600],
+  }
 }
 
 .modalheader {
@@ -374,7 +384,7 @@ author {
   height: 39px;
   width: 130px;
   left: 0px;
-  top: 712px;
+  top: 798px;
   border-radius: 8px;
 
   font-family: Graphik LCG;
@@ -392,14 +402,22 @@ author {
 
 }
 
+mark {
+  padding: 0px;
+  background-color: none;
+  color: red;
+  background: #ffffff;
+}
+
 .closebutton {
   /* cancelButton */
 
+  position: absolute;
 
   height: 39px;
   width: 130px;
   left: 147px;
-  top: 712px;
+  top: 798px;
   border-radius: 8px;
   font-family: Graphik LCG;
   font-size: 14px;
@@ -468,4 +486,40 @@ td {
 
 
 
+}
+
+nav.react-contextmenu {
+  position: fixed;
+  width: 200px;
+  left: 0;
+  top: calc(100% + 10px);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px 0;
+  z-index: 99;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+}
+
+.react-contextmenu .react-contextmenu-item:hover {
+  background: #cccccc;
+}
+
+.react-contextmenu-item:hover:not(.react-contextmenu-item--disabled) {
+  background-color: #f1f1f1;
+}
+
+.react-contextmenu .react-contextmenu-item {
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s;
+  position: relative;
+  margin-bottom: 2px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  outline: none;
 }

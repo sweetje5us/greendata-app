@@ -59,6 +59,7 @@ export const Form1 = (props) => {
         <div class="modalheader">Режим добавления записи</div>
 
         <div class="modalcontent">
+
           <Form onSubmit={onSubmit(person)}>
             <Form.Group
               className="was-validated inputtext"
@@ -67,9 +68,10 @@ export const Form1 = (props) => {
 
             >
               <Form.Label>
-                Имя
-            </Form.Label>
+                Имя<mark>*</mark>
+              </Form.Label>
               <Form.Control
+                className="inputname"
                 name="name"
                 type="text"
                 required={true}
@@ -85,8 +87,8 @@ export const Form1 = (props) => {
 
             >
               <Form.Label>
-                Фамилия
-            </Form.Label>
+                Фамилия<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 name="surname"
                 type="text"
@@ -116,8 +118,8 @@ export const Form1 = (props) => {
 
             >
               <Form.Label>
-                Должность
-            </Form.Label>
+                Должность<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 as="select"
                 name="position"
@@ -140,8 +142,8 @@ export const Form1 = (props) => {
 
             >
               <Form.Label>
-                Дата рождения
-            </Form.Label>
+                Дата рождения<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 name="bdate"
                 type="date"
@@ -159,11 +161,11 @@ export const Form1 = (props) => {
               className="was-validated inputtext"
             >
               <Form.Label>
-                Пол
-            </Form.Label>
+                Пол<mark>*</mark>
+              </Form.Label>
               <RadioGroup aria-label="gender" name="gender1">
-                <FormControlLabel id="female" value="Женщина" control={<Radio required />} label="Женщина" selected={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
-                <FormControlLabel id="male" value="Мужчина" control={<Radio required />} label="Мужчина" selected={person.sex === "Женщина" ? true : false} onChange={handleSex} />
+                <FormControlLabel id="female" value="Женщина" control={<Radio color='primary' required />} label="Женщина" selected={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
+                <FormControlLabel id="male" value="Мужчина" control={<Radio color='primary' required />} label="Мужчина" selected={person.sex === "Женщина" ? true : false} onChange={handleSex} />
               </RadioGroup>
             </Form.Group>
 
@@ -174,8 +176,8 @@ export const Form1 = (props) => {
 
             >
               <Form.Label>
-                Дата приема на работу
-            </Form.Label>
+                Дата приема на работу<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 type="date"
                 name="hdate"
@@ -198,7 +200,7 @@ export const Form1 = (props) => {
                 min={person.hdate}
                 max={today}
                 value={person.fdate}
-                disabled={!person.fdate}
+                disabled={!person.hdate}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -212,10 +214,10 @@ export const Form1 = (props) => {
                 inline
               />
             </Form.Group>
-            <Button className="addbutton" type="submit">
+            <Button className="btn-success addbutton" type="submit">
               Добавить
           </Button>
-            <Button className="closebutton" type="button" onClick={onCancel}>
+            <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
               Закрыть
           </Button>
           </Form>
@@ -266,8 +268,8 @@ export const Form2 = (props) => {
 
             >
               <Form.Label>
-                Имя
-            </Form.Label>
+                Имя<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 name="name"
                 type="text"
@@ -285,8 +287,8 @@ export const Form2 = (props) => {
 
             >
               <Form.Label>
-                Фамилия
-            </Form.Label>
+                Фамилия<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 name="surname"
                 type="text"
@@ -316,8 +318,8 @@ export const Form2 = (props) => {
 
             >
               <Form.Label>
-                Должность
-            </Form.Label>
+                Должность<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 as="select"
                 name="position"
@@ -340,8 +342,8 @@ export const Form2 = (props) => {
 
             >
               <Form.Label>
-                Дата рождения
-            </Form.Label>
+                Дата рождения<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 name="bdate"
                 type="date"
@@ -359,11 +361,11 @@ export const Form2 = (props) => {
               className="inputtext"
             >
               <Form.Label>
-                Пол
-                </Form.Label>
-              <RadioGroup aria-label="gender" name="gender1">
-                <FormControlLabel id="female" value="Женщина" control={<Radio required />} label="Женщина" selected={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
-                <FormControlLabel id="male" value="Мужчина" control={<Radio required />} label="Мужчина" selected={person.sex === "Женщина" ? true : false} onChange={handleSex} />
+                Пол<mark>*</mark>
+              </Form.Label>
+              <RadioGroup aria-label="gender" name="radio-buttons-group">
+                <FormControlLabel id="female" value="Женщина" control={<Radio color='primary' required />} label="Женщина" checked={person.sex === "Женщина" ? true : false} onChange={handleSex} />
+                <FormControlLabel id="male" value="Мужчина" control={<Radio color='primary' required />} label="Мужчина" checked={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
               </RadioGroup>
             </Form.Group>
 
@@ -374,8 +376,8 @@ export const Form2 = (props) => {
 
             >
               <Form.Label>
-                Дата приема на работу
-            </Form.Label>
+                Дата приема на работу<mark>*</mark>
+              </Form.Label>
               <Form.Control
                 type="date"
                 name="hdate"
@@ -407,15 +409,15 @@ export const Form2 = (props) => {
                 type="checkbox"
                 name="drive_l"
                 label="Наличие прав"
-                checked={person.drive_l}
+                checked={person.drive_l === "Да" ? true : false}
                 onChange={handleChange}
                 inline
               />
             </Form.Group>
-            <Button className="addbutton" type="submit" >
+            <Button className="btn-success addbutton" type="submit" >
               Изменить
           </Button>
-            <Button className="closebutton" type="button" onClick={onCancel}>
+            <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
               Закрыть
           </Button>
           </Form>

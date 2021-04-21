@@ -1,9 +1,10 @@
-import { Hidden } from '@material-ui/core'
-import React, { useEffect } from 'react'
+
+import React, { useEffect } from 'react';
+import ReactDOM from "react-dom";
 
 import { useTable, useSortuseRowSelectBy, useRowSelect } from 'react-table'
 
-import makeData from './makeData'
+
 
 
 
@@ -96,17 +97,24 @@ function Table({ columns, data, onSelect }) {
           <thunder />
         </tableheader>
         <tablecontent {...getTableBodyProps()}>
+
           {rows.map((row, i) => {
             prepareRow(row)
             return (
+
+
               <tableitem id={i} {...row.getRowProps()}>
                 {row.cells.map(cell => {
 
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tableitem>
+
+
             )
           })}
+
+
         </tablecontent>
       </table>
 
