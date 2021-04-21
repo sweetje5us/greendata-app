@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-
+import { Radio } from '@material-ui/core';
+import { RadioGroup, FormControlLabel } from '@material-ui/core';
 
 
 var today = new Date();
@@ -47,7 +48,7 @@ export const Form1 = (props) => {
     setPerson((person) => {
       return {
         ...person,
-        sex: event.target.id === "male" ? "Мужчина" : "Женщина"
+        sex: event.target.value === "Мужчина" ? "Мужчина" : "Женщина"
       };
     });
   }, []);
@@ -153,43 +154,17 @@ export const Form1 = (props) => {
             </Form.Group>
             <Form.Group
               controlId="formBasicDriverSex"
-              className="was-validated inputtext"
+
               noValidate
-              className="inputtext"
+              className="was-validated inputtext"
             >
               <Form.Label>
                 Пол
             </Form.Label>
-              {/* <MDBInput
-              type="radio"
-              id="female"
-              name="radio-stacked"
-              selected={person.sex === "Мужчина" ? true : false}
-              onChange={handleSex}
-              required
-              label="Женщина"
-              autoComplete="nope"
-              style={{
-                width: "12px",
-                height: "12px",
-                marginLeft: "-13px"
-              }}
-            />
-            <MDBInput
-              type="radio"
-              id="male"
-              name="radio-stacked"
-              selected={person.sex === "Женщина" ? true : false}
-              onChange={handleSex}
-              required
-              label="Мужчина"
-              autoComplete="nope"
-              style={{
-                width: "12px",
-                height: "12px",
-                marginLeft: "-13px"
-              }}
-            /> */}
+              <RadioGroup aria-label="gender" name="gender1">
+                <FormControlLabel id="female" value="Женщина" control={<Radio required />} label="Женщина" selected={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
+                <FormControlLabel id="male" value="Мужчина" control={<Radio required />} label="Мужчина" selected={person.sex === "Женщина" ? true : false} onChange={handleSex} />
+              </RadioGroup>
             </Form.Group>
 
             <Form.Group
@@ -203,10 +178,10 @@ export const Form1 = (props) => {
             </Form.Label>
               <Form.Control
                 type="date"
-                name="fdate"
+                name="hdate"
                 min={firstday}
                 max={today}
-                value={person.fdate}
+                value={person.hdate}
                 onChange={handleChange}
                 required={true}
               />
@@ -218,11 +193,11 @@ export const Form1 = (props) => {
             </Form.Label>
               <Form.Control
                 type="date"
-                name="hdate"
+                name="fdate"
 
-                min={person.fdate}
+                min={person.hdate}
                 max={today}
-                value={person.hdate}
+                value={person.fdate}
                 disabled={!person.fdate}
                 onChange={handleChange}
               />
@@ -274,7 +249,7 @@ export const Form2 = (props) => {
     setPerson((person) => {
       return {
         ...person,
-        sex: event.target.id === "male" ? "Мужчина" : "Женщина"
+        sex: event.target.value === "Мужчина" ? "Мужчина" : "Женщина"
       };
     });
   }, []);
@@ -385,37 +360,11 @@ export const Form2 = (props) => {
             >
               <Form.Label>
                 Пол
-            </Form.Label>
-              {/* <MDBInput
-              type="radio"
-              id="female"
-              name="radio-stacked"
-              selected={person.sex === "Мужчина" ? true : false}
-              onChange={handleSex}
-              required
-              label="Женщина"
-              autoComplete="nope"
-              style={{
-                width: "12px",
-                height: "12px",
-                marginLeft: "-13px"
-              }}
-            />
-            <MDBInput
-              type="radio"
-              id="male"
-              name="radio-stacked"
-              selected={person.sex === "Женщина" ? true : false}
-              onChange={handleSex}
-              required
-              label="Мужчина"
-              autoComplete="nope"
-              style={{
-                width: "12px",
-                height: "12px",
-                marginLeft: "-13px"
-              }}
-            /> */}
+                </Form.Label>
+              <RadioGroup aria-label="gender" name="gender1">
+                <FormControlLabel id="female" value="Женщина" control={<Radio required />} label="Женщина" selected={person.sex === "Мужчина" ? true : false} onChange={handleSex} />
+                <FormControlLabel id="male" value="Мужчина" control={<Radio required />} label="Мужчина" selected={person.sex === "Женщина" ? true : false} onChange={handleSex} />
+              </RadioGroup>
             </Form.Group>
 
             <Form.Group
@@ -446,10 +395,10 @@ export const Form2 = (props) => {
                 type="date"
                 name="fdate"
 
-                min={person.fdate}
+                min={person.hdate}
                 max={today}
                 value={person.fdate}
-                disabled={!person.fdate}
+
                 onChange={handleChange}
               />
             </Form.Group>
