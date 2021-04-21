@@ -325,15 +325,6 @@ author {
 
 }
 
-root {
-
-  color: green[400],
-  '&$checked': {
-    color: green[600],
-  }
-}
-
-
 .modalheader {
   /* nameModal */
 
