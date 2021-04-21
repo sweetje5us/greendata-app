@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-import { render } from "react-dom";
+import ReactDOM , { render } from "react-dom";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
