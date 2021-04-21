@@ -217,7 +217,7 @@ event.preventDefault(); //отмена действия браузера, т.е.
     this.setState({
       selectedIds,
     })
-    
+
   }
   handleRandom = ()=>{
     Swal.fire({
@@ -232,6 +232,11 @@ event.preventDefault(); //отмена действия браузера, т.е.
     }).then((result) => {
       if (result.isConfirmed) {
 localStorage.setItem("items",JSON.stringify(makedata(20)));
+Swal.fire(
+  'Готово!',
+  'Добавлено 20 записей.',
+  'success'
+)
 this.getItems();
   }
 }
