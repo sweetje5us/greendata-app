@@ -3,10 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import { Radio } from '@material-ui/core';
 import { RadioGroup, FormControlLabel } from '@material-ui/core';
 
-
+// Контроли datepicker'ов по датам
 var today = new Date();
 var firstday = "1900-01-01";
-
 var dd = String(today.getDate()).padStart(2, "0");
 var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 var yyyy = today.getFullYear();
@@ -57,15 +56,13 @@ export const Form1 = (props) => {
     <>
       <div class="allModal">
         <div class="modalheader">Режим добавления записи</div>
-
         <div class="modalcontent">
-
           <Form onSubmit={onSubmit(person)}>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
               controlId="formBasicName"
-
             >
               <Form.Label>
                 Имя<mark>*</mark>
@@ -80,11 +77,11 @@ export const Form1 = (props) => {
                 pattern="[A-Za-zА-Яа-яЁё]{2,20}"
               />
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
               controlId="formBasicSurName"
-
             >
               <Form.Label>
                 Фамилия<mark>*</mark>
@@ -98,24 +95,24 @@ export const Form1 = (props) => {
                 pattern="[A-Za-zА-Яа-яЁё]{2,30}"
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicLastName" className="inputtext">
               <Form.Label>
                 Отчество
             </Form.Label>
               <Form.Control
                 type="text"
-
                 name="lastname"
                 value={person.lastname}
                 onChange={handleChange}
                 pattern="[A-Za-zА-Яа-яЁё]{2,30}"
               />
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
               controlId="formBasicPosition"
-
             >
               <Form.Label>
                 Должность<mark>*</mark>
@@ -135,11 +132,11 @@ export const Form1 = (props) => {
                 <option>Тамада</option>
               </Form.Control>
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
               controlId="formBasicBirthDate"
-
             >
               <Form.Label>
                 Дата рождения<mark>*</mark>
@@ -154,9 +151,9 @@ export const Form1 = (props) => {
                 required={true}
               />
             </Form.Group>
+
             <Form.Group
               controlId="formBasicDriverSex"
-
               noValidate
               className="was-validated inputtext"
             >
@@ -173,7 +170,6 @@ export const Form1 = (props) => {
               className="was-validated inputtext"
               noValidate
               controlId="formBasicFDate"
-
             >
               <Form.Label>
                 Дата приема на работу<mark>*</mark>
@@ -188,11 +184,12 @@ export const Form1 = (props) => {
                 required={true}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicHDate" className="inputtext">
 
               <Form.Label>
                 Дата увольнения
-            </Form.Label>
+              </Form.Label>
               <Form.Control
                 type="date"
                 name="fdate"
@@ -204,6 +201,7 @@ export const Form1 = (props) => {
                 onChange={handleChange}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicDriverLicence" className="inputtext">
               <Form.Check
                 type="checkbox"
@@ -214,12 +212,14 @@ export const Form1 = (props) => {
                 inline
               />
             </Form.Group>
+
             <Button className="btn-success addbutton" type="submit">
               Добавить
-          </Button>
+            </Button>
             <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
               Закрыть
-          </Button>
+            </Button>
+
           </Form>
         </div>
       </div>
@@ -261,6 +261,7 @@ export const Form2 = (props) => {
         <div class="modalheader">Режим изменения записи</div>
         <div class="modalcontent">
           <Form onSubmit={onSubmit(person)}>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
@@ -280,6 +281,7 @@ export const Form2 = (props) => {
                 pattern="[A-Za-zА-Яа-яЁё]{2,20}"
               />
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
@@ -298,6 +300,7 @@ export const Form2 = (props) => {
                 pattern="[A-Za-zА-Яа-яЁё]{2,30}"
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicLastName" className="inputtext">
               <Form.Label>
                 Отчество
@@ -311,6 +314,7 @@ export const Form2 = (props) => {
                 pattern="[A-Za-zА-Яа-яЁё]{2,30}"
               />
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
@@ -335,6 +339,7 @@ export const Form2 = (props) => {
                 <option>Тамада</option>
               </Form.Control>
             </Form.Group>
+
             <Form.Group
               className="was-validated inputtext"
               noValidate
@@ -354,6 +359,7 @@ export const Form2 = (props) => {
                 required={true}
               />
             </Form.Group>
+
             <Form.Group
               controlId="formBasicDriverSex"
               className="was-validated inputtext"
@@ -388,6 +394,7 @@ export const Form2 = (props) => {
                 required={true}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicHDate" className="inputtext">
 
               <Form.Label>
@@ -404,6 +411,7 @@ export const Form2 = (props) => {
                 onChange={handleChange}
               />
             </Form.Group>
+
             <Form.Group controlId="formBasicDriverLicence" className="inputtext">
               <Form.Check
                 type="checkbox"
@@ -414,12 +422,14 @@ export const Form2 = (props) => {
                 inline
               />
             </Form.Group>
+
             <Button className="btn-success addbutton" type="submit" >
               Изменить
           </Button>
             <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
               Закрыть
           </Button>
+
           </Form>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { useTable, useSortuseRowSelectBy, useRowSelect } from 'react-table'
 
 
 
-
+// Добавляем Столбец с чекбоксами
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
     const defaultRef = React.useRef()
@@ -24,7 +24,7 @@ const IndeterminateCheckbox = React.forwardRef(
     )
   }
 )
-
+// Взаимодействие с чекбоксами
 const getSelectionColumns = (hooks) => {
   hooks.visibleColumns.push(columns => [
     // Let's make a column for selection
@@ -71,7 +71,7 @@ function Table({ columns, data, onSelect }) {
     useRowSelect,
     getSelectionColumns
   )
-
+  //получаем Id выделенных строк
   useEffect(() => {
     const selectedIds = selectedFlatRows.reduce((acc, { original }) => ({
       ...acc,

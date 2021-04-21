@@ -1,5 +1,7 @@
 import namor from 'namor';
 
+var id = 0;
+
 const range = len => {
   const arr = []
   for (let i = 0; i < len; i++) {
@@ -8,16 +10,15 @@ const range = len => {
   return arr
 }
 
-
+// Генерация случайной даты внутри указанного диапазона + приведение к формату
 function randomDate(start, end) {
   let date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   let dd = String(date.getDate()).padStart(2, "0");
 let mm = String(date.getMonth() + 1).padStart(2, "0"); //January is 0!
-let yyyy = date.getFullYear();
-  
+let yyyy = date.getFullYear(); 
   return date=yyyy + "-" + mm + "-" + dd
 }
-var id = 0;
+
 const newPerson = () => {
   const sexChance = Math.random()
   const driveChance = Math.random()

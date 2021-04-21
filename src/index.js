@@ -14,7 +14,7 @@ import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 
 
-
+// Генерация Id для новых записей
 function getNewId() {
   let allItemsString = JSON.parse(localStorage.getItem("items"));
   let maxId = 0;
@@ -32,9 +32,8 @@ class App extends Component {
     selectedIds: {},
     addModalIsOpen: false,
     editModalIsOpen: false
-
   };
-
+// Получение данных в таблицу
   getItems = (props) => {
     let items;
     try {
@@ -60,7 +59,6 @@ class App extends Component {
 
   closeAddModal = () => {
     this.setState({ addModalIsOpen: false });
-
   };
 
   openEditModal = () => {
@@ -84,7 +82,7 @@ class App extends Component {
       this.setState({ editModalIsOpen: true });
     }
   };
-
+// Получение данных выделенной записи для изменения
   getEditPerson = () => {
     const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
     const editId = selectedIdsList[0]
@@ -101,7 +99,7 @@ class App extends Component {
       sex: value
     });
   };
-
+// Добавление новой записи
   handleSubmit = (person) => (event) => {
     let rowArray = {
       ...person,
@@ -124,7 +122,7 @@ class App extends Component {
     this.getItems();
     event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
   };
-
+// Изменение выделенной записи
   handleSubmitEdit = (person) => (event) => {
     Swal.fire({
       title: 'Вы уверены?',
@@ -148,12 +146,6 @@ class App extends Component {
         allitems[index] = rowArray;
       }
     });
-
-
-
-
-
-
     localStorage.setItem("items", JSON.stringify(allitems));
     Swal.fire(
       'Готово!',
@@ -163,15 +155,11 @@ class App extends Component {
     this.getItems();
     this.closeEditModal();
   }}
-  )
-    
-event.preventDefault(); //отмена действия браузера, т.е. обновления страницы
-    
-    
+  )   
+event.preventDefault(); //отмена действия браузера, т.е. обновления страницы  
   };
-
-  handleDelete = () => {
-    
+// Удаление выделенных записей
+  handleDelete = () => {  
     Swal.fire({
       title: 'Вы уверены?',
       text: "Выбранные записи будут удалены!",
@@ -183,8 +171,7 @@ event.preventDefault(); //отмена действия браузера, т.е.
       confirmButtonText: 'Да, удалить!'
     }).then((result) => {
       if (result.isConfirmed) {
-        const allitems = this.state.items;
-   
+        const allitems = this.state.items; 
         const selectedIdsList = Object.keys(this.state.selectedIds).filter((key) => this.state.selectedIds[key])
         if (selectedIdsList.length!== 0){
         const clinedList = allitems.reduce((acc, person) => {
@@ -209,16 +196,14 @@ event.preventDefault(); //отмена действия браузера, т.е.
       })
     }}
     })
-    
-
   };
-
+// Получение Id выделенной строки
   handleSelect = (selectedIds) => {
     this.setState({
       selectedIds,
     })
-
   }
+// Заполнение случайными данными из MakeData.js
   handleRandom = ()=>{
     Swal.fire({
       title: 'Вы уверены?',
@@ -286,18 +271,17 @@ this.getItems();
             <Form2
               onSubmit={this.handleSubmitEdit}
               onCancel={this.closeEditModal}
-              // editPerson={this.state.selectedIds}
               editPerson={this.state.editModalIsOpen && this.getEditPerson()}
             />
           </div>
         </Modal>
-        <ContextMenuTrigger id="same_unique_identifier">
+        {/*Триггер вызова контекстного меню внутри таблицы по нажатию ПКМ */}
+        <ContextMenuTrigger id="same_unique_identifier"> 
         <ReactTable data={this.state.items} onSelect={this.handleSelect}>
-        </ReactTable>
-        
+        </ReactTable>    
       </ContextMenuTrigger>
-
       <ContextMenu id="same_unique_identifier">
+        {/* Действия аналогичны кнопкам */}
         <MenuItem data={{id: '1'}} onClick={this.openEditModal} >
           Изменить
         </MenuItem>
@@ -317,10 +301,9 @@ this.getItems();
       </author>
         </footer>
       </>
-
-
     );
   }
 }
+
 render(<App />, document.getElementById("root"));
 
