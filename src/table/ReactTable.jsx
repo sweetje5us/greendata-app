@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useTable, useSortuseRowSelectBy, useRowSelect } from 'react-table'
+import { useTable, useRowSelect } from 'react-table'
 
 // Добавляем Столбец с чекбоксами
 const IndeterminateCheckbox = React.forwardRef(
@@ -72,7 +72,7 @@ function Table({ columns, data, onSelect }) {
     }), {})
     onSelect(selectedIds)
 
-  }, [selectedRowIds, onSelect])
+  }, [selectedRowIds, selectedFlatRows, onSelect])
 
   return (
     <>

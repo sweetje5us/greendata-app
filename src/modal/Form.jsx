@@ -33,9 +33,7 @@ export const Form1 = (props) => {
     setPerson((person) => {
       const target = event.target;
       const value = target.type === "checkbox" ? target.checked : target.value;
-
       const name = target.name;
-
       return {
         ...person,
         [name]: value
@@ -364,7 +362,6 @@ export const Form2 = (props) => {
               controlId="formBasicDriverSex"
               className="was-validated inputtext"
               noValidate
-              className="inputtext"
             >
               <Form.Label>
                 Пол<mark>*</mark>
