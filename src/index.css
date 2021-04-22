@@ -12,6 +12,15 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: "CustomFont";
+  src: url("https://gist.github.com/mfd/e7842774e037edf15919037594a79b2b/raw/41fbcc1619e8b73a5352abcbde9a563572f0ceb6/Graphik-Black-Web.eot");
+  src: url("https://gist.github.com/mfd/e7842774e037edf15919037594a79b2b/raw/41fbcc1619e8b73a5352abcbde9a563572f0ceb6/Graphik-Black-Web.woff") format("woff"),
+    url("https://gist.github.com/mfd/e7842774e037edf15919037594a79b2b/raw/41fbcc1619e8b73a5352abcbde9a563572f0ceb6/Graphik-Black-Web.woff2") format("woff2"),
+    url("https://gist.github.com/mfd/e7842774e037edf15919037594a79b2b/raw/41fbcc1619e8b73a5352abcbde9a563572f0ceb6/Graphik-Black-Web.ttf") format("opentype"),
+    url("https://yoursite.com/css/fonts/CustomFont.svg#filename") format("svg");
+}
+
 body {
   height: 100%;
   width: 1440px;
