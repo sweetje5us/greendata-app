@@ -2,6 +2,7 @@ import React, { useCallback, useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Radio } from '@material-ui/core';
 import { RadioGroup, FormControlLabel } from '@material-ui/core';
+import { CHECKBOX_STATUS_CHECKED, CHECKBOX_STATUS_UNCHECKED } from "react-bootstrap-table-next";
 
 // Контроли datepicker'ов по датам
 var today = new Date();
@@ -25,7 +26,7 @@ export const Form1 = (props) => {
     sex: "",
     fdate: "",
     hdate: "",
-    drive_l: ""
+    drive_l: "",
   });
 
   //получаем значение input'ов
@@ -235,13 +236,14 @@ export const Form2 = (props) => {
   const handleChange = useCallback((event) => {
     setPerson((person) => {
       const target = event.target;
-      const value = target.type === "checkbox" ? target.checked : target.value;
+      const value = target.value;
 
       const name = target.name;
 
       return {
         ...person,
-        [name]: value
+        [name]: value,
+        drive_l: target.checked === true ? "Да" : "Нет",
       };
     });
   }, []);
@@ -250,7 +252,7 @@ export const Form2 = (props) => {
     setPerson((person) => {
       return {
         ...person,
-        sex: event.target.value === "Мужчина" ? "Мужчина" : "Женщина"
+        sex: event.target.value === "Мужчина" ? "Мужчина" : "Женщина",
       };
     });
   }, []);

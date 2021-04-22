@@ -101,7 +101,7 @@ class App extends Component {
   handleSubmit = (person) => (event) => {
     let rowArray = {
       ...person,
-      drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
+      drive_l: person.drive_l === true ? "Да" : "Нет",
       id: person.id ? person.id : getNewId()
     };
     let stroke = JSON.stringify(rowArray) + `]`;
@@ -135,7 +135,7 @@ class App extends Component {
       if (result.isConfirmed) {
     let rowArray = {
       ...person,
-      drive_l: Boolean(person.drive_l) === true ? "Да" : "Нет",
+      drive_l: person.drive_l,
     };
     let allitems = JSON.parse(localStorage.getItem("items"));
     let stroke = ({ id: this.state.selectedIds });
