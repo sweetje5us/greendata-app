@@ -396,7 +396,6 @@ export const Form2 = (props) => {
             </Form.Group>
 
             <Form.Group controlId="formBasicHDate" className="inputtext">
-
               <Form.Label>
                 Дата увольнения
             </Form.Label>
