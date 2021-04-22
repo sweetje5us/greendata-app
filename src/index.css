@@ -1,14 +1,27 @@
 body {
   position: relative;
-  width: 1440px;
-  height: 1000px;
+  max-width: 1440px;
+  max-height: 1000px;
+  min-width: 1440px;
+  min-height: 1000px;
 
-  overflow-x: hidden;
   min-height: 100vh;
 
   background: linear-gradient(180deg, #005AC4 0%, rgba(0, 255, 25, 0.28) 100%);
 }
 
+img {
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  width: 80%;
+  min-width: 720px;
+}
 
 .logo {
   /* LOGO */
@@ -16,14 +29,14 @@ body {
   position: absolute;
   width: 295px;
   height: 75px;
-  left: 30%;
+  left: 200px;
   top: 17px;
 
 
 }
 
 .buttonadd {
-  left: 30%;
+  left: 200px;
   top: 107px;
 }
 
@@ -31,7 +44,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 40%;
+  left: 350px;
   top: 107px;
 }
 
@@ -39,7 +52,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 50%;
+  left: 500px;
   top: 107px;
 
 }
@@ -48,7 +61,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 60%;
+  left: 650px;
   top: 107px;
 
 }
@@ -100,7 +113,7 @@ table {
   position: absolute;
   width: 1040px;
   height: 672px;
-  left: 30%;
+  left: 200px;
   top: 158px;
   background: #FFFFFF;
   border-radius: 8px;
@@ -244,7 +257,7 @@ footer {
   position: absolute;
   width: 1040px;
   height: 24px;
-  left: 33%;
+  left: 245px;
   top: 842px;
 }
 

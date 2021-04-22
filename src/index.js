@@ -230,6 +230,7 @@ this.getItems();
 
     return (
       <>
+      <div className="wrapper">
         <img className="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
         </img>
         
@@ -298,6 +299,7 @@ this.getItems();
             Made by Brylove Eugene
       </div>
         </footer>
+        </div>
       </>
     );
   }
