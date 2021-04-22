@@ -14,6 +14,7 @@ html {
 
 body {
   height: 100%;
+  width: 1440px;
   margin: 0;
   background: linear-gradient(180deg, #005AC4 0%, rgba(0, 255, 25, 0.28) 100%);
   background-repeat: no-repeat;
@@ -260,16 +261,16 @@ footer {
   position: absolute;
   width: 1040px;
   height: 24px;
-  left: 245px;
+  left: 200px;
   top: 842px;
+
 }
 
 .copyrights {
   /* copyright */
 
   position: absolute;
-  width: 362px;
-  height: 24px;
+  height: 34px;
   left: 0px;
   top: 0px;
 
@@ -280,8 +281,7 @@ footer {
   font-size: 14px;
   line-height: 24px;
   /* identical to box height, or 171% */
-  display: flex;
-  align-items: center;
+  text-align: center;
 
   /* Gray 1 */
   color: #333333;
@@ -297,11 +297,10 @@ footer {
   /* Тестовое задание сделал Брылев Е.В. */
 
   position: absolute;
-  width: 254px;
-  height: 24px;
-  left: 786px;
+  height: 34px;
+  left: 875px;
   top: 0px;
-
+  text-align: center;
   /* Description */
   font-family: Graphik LCG;
   font-style: normal;
@@ -309,8 +308,7 @@ footer {
   font-size: 14px;
   line-height: 24px;
   /* identical to box height, or 171% */
-  display: flex;
-  align-items: center;
+
 
   color: #000000;
 
