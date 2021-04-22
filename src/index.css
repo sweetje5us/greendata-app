@@ -8,12 +8,16 @@
   /* добавим плавность переходов для всех элементов страницы*/
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  position: relative;
-  width: 90%;
+  height: 100%;
+  margin: 0;
   background: linear-gradient(180deg, #005AC4 0%, rgba(0, 255, 25, 0.28) 100%);
-  min-height: 100vh;
-  min-width: 50vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 img {
@@ -315,15 +319,12 @@ footer {
 
 .modalcustom {
   /* Modalbody */
-
   position: relative;
-
   max-height: 100%;
   width: 277px;
   min-height: 73%;
-  margin-left: 740px;
-  margin-top: 15px;
-  overflow-x: hidden;
+  margin-left: 30%;
+  margin-top: 5%;
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
@@ -333,7 +334,7 @@ footer {
 .modalheader {
   /* nameModal */
 
-  position: fixed;
+
   height: 53.93095397949219px;
   width: 277px;
   top: 0px;
@@ -366,11 +367,12 @@ footer {
   /* modalcontent */
   position: absolute;
   border-radius: 8px;
-  max-height: 94%;
+  max-height: 100%;
   width: 277px;
   min-height: 50%;
   left: 0px;
-  top: 39px;
+  top: 56px;
+  bottom: 2px;
   border-radius: 8px;
   overflow-y: scroll;
   overflow-x: hidden;
