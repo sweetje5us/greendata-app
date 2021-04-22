@@ -205,7 +205,7 @@ event.preventDefault(); //отмена действия браузера, т.е.
   handleRandom = ()=>{
     Swal.fire({
       title: 'Вы уверены?',
-      text: "Таблица будет очищена и заполнена случайными данными!",
+      text: "Таблица будет очищена и заполнена данными!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
