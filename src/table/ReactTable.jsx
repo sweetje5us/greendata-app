@@ -27,18 +27,18 @@ const getSelectionColumns = (hooks) => {
       // The header can use the table's getToggleAllRowsSelectedProps method
       // to render a checkbox
       Header: ({ getToggleAllRowsSelectedProps }) => (
-        <th1>
-          <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
 
-        </th1>
+        <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+
+
       ),
       // The cell can use the individual row's getToggleRowSelectedProps method
       // to the render a checkbox
       Cell: ({ row }) => (
 
-        <td>
-          <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-        </td>
+
+        <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+
 
 
       ),
@@ -76,39 +76,39 @@ function Table({ columns, data, onSelect }) {
 
   return (
     <>
-      <table class="maintable" {...getTableProps()}>
-        <tableheader>
-          <thbox>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                ))}
-              </tr>
-            ))}
-          </thbox>
-          <thunder />
-        </tableheader>
-        <tablecontent {...getTableBodyProps()}>
+      <table className="maintable" {...getTableProps()}>
+        <thead>
+
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              ))}
+            </tr>
+          ))}
+
+          <tr className="thunder" />
+        </thead>
+        <tbody {...getTableBodyProps()}>
 
           {rows.map((row, i) => {
             prepareRow(row)
             return (
 
 
-              <tableitem id={i} {...row.getRowProps()}>
+              <tr className="tableitem" id={i} {...row.getRowProps()}>
                 {row.cells.map(cell => {
 
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
-              </tableitem>
+              </tr>
 
 
             )
           })}
 
 
-        </tablecontent>
+        </tbody>
       </table>
 
     </>

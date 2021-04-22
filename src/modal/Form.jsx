@@ -15,7 +15,7 @@ today = yyyy + "-" + mm + "-" + dd;
 
 export const Form1 = (props) => {
   const { onSubmit, onCancel, } = props;
-  const [person, setPerson, editPerson] = useState({
+  const [person, setPerson] = useState({
     id: "",
     name: "",
     surname: "",
@@ -52,9 +52,9 @@ export const Form1 = (props) => {
 
   return (
     <>
-      <div class="allModal">
-        <div class="modalheader">Режим добавления записи</div>
-        <div class="modalcontent">
+      <div className="allModal">
+        <div className="modalheader">Режим добавления записи</div>
+        <div className="modalcontent">
           <Form onSubmit={onSubmit(person)}>
 
             <Form.Group
@@ -255,9 +255,9 @@ export const Form2 = (props) => {
   }, []);
   return (
     <>
-      <div class="allModal">
-        <div class="modalheader">Режим изменения записи</div>
-        <div class="modalcontent">
+      <div className="allModal">
+        <div className="modalheader">Режим изменения записи</div>
+        <div className="modalcontent">
           <Form onSubmit={onSubmit(person)}>
 
             <Form.Group

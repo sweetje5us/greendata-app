@@ -96,10 +96,6 @@ button {
 }
 
 table {
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: 0px;
   position: absolute;
   width: 1040px;
@@ -108,12 +104,9 @@ table {
   top: 158px;
   background: #FFFFFF;
   border-radius: 8px;
-
-  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-button {
-  background-image: url('');
   background-repeat: no-repeat;
   width: 6px;
   height: 0px
@@ -135,7 +128,6 @@ table {
 }
 
 ::-webkit-resizer {
-  background-image: url('');
   background-repeat: no-repeat;
   width: 7px;
   height: 0px
@@ -153,7 +145,7 @@ thead {
   top: 0px;
 }
 
-thbox {
+tr {
   /* TableHeaderBox */
   display: flex;
   flex-direction: row;
@@ -171,9 +163,8 @@ thbox {
 
 }
 
-thunder {
+.thunder {
   /* HeaderUnderline */
-
   position: absolute;
   width: 1040px;
   height: 1px;
@@ -185,7 +176,7 @@ thunder {
 
 }
 
-tablecontent {
+tbody {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -201,7 +192,7 @@ tablecontent {
 
 }
 
-tableitem:nth-child(odd) {
+.tableitem:nth-child(odd) {
 
   display: flex;
   flex-direction: row;
@@ -225,7 +216,7 @@ tableitem:nth-child(odd) {
 
 }
 
-tableitem:nth-child(even) {
+.tableitem:nth-child(even) {
 
   display: flex;
   flex-direction: row;
@@ -257,7 +248,7 @@ footer {
   top: 842px;
 }
 
-copyrights {
+.copyrights {
   /* copyright */
 
   position: absolute;
@@ -282,11 +273,11 @@ copyrights {
 
 }
 
-tableitem:hover {
+.tableitem:hover {
   background: #32a87d2d;
 }
 
-author {
+.author {
   /* Тестовое задание сделал Брылев Е.В. */
 
   position: absolute;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM , { render } from "react-dom";
+import { render } from "react-dom";
 import Modal from "react-modal";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -230,9 +230,9 @@ this.getItems();
 
     return (
       <>
-        <img class="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
+        <img className="logo" src="https://greendatasoft.ru/wp-content/uploads/2018/05/лого-1.png" alt="greendata logo">
         </img>
-        <buttongroup>
+        
           <Button className="btn-success greenbutton buttonadd" onClick={this.openAddModal}>
             Добавить
           </Button>
@@ -245,7 +245,7 @@ this.getItems();
           <Button id="buttonrandom" className="btn-warning buttonrandom" onClick={this.handleRandom}>
             Заполнить
           </Button>
-        </buttongroup>
+        
         <Modal
           className="modalcustom"
           isOpen={this.state.addModalIsOpen}
@@ -291,12 +291,12 @@ this.getItems();
         </MenuItem>
       </ContextMenu>
         <footer>
-          <copyrights>
+          <div className="copyrights">
             © GreenData|2014-2021
-      </copyrights>
-          <author>
+      </div>
+          <div className="author">
             Made by Brylove Eugene
-      </author>
+      </div>
         </footer>
       </>
     );
