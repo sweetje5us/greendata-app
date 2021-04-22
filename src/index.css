@@ -1,9 +1,8 @@
 body {
   position: relative;
-  max-width: 1440px;
-  max-height: 1000px;
-  min-width: 1440px;
-  min-height: 1000px;
+  width: 1440px;
+  height: 1000px;
+
 
   min-height: 100vh;
 
