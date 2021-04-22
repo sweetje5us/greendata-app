@@ -211,15 +211,16 @@ export const Form1 = (props) => {
               />
             </Form.Group>
 
-            <Button className="btn-success addbutton" type="submit">
-              Добавить
-            </Button>
-            <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
-              Закрыть
-            </Button>
-
           </Form>
+          <Button className="btn-success addbutton" type="submit">
+            Добавить
+            </Button>
+          <Button className="btn-danger closebutton" type="button" onClick={onCancel}>
+            Закрыть
+            </Button>
         </div>
+
+
       </div>
     </>
   );
