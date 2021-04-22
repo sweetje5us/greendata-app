@@ -16,14 +16,14 @@ body {
   position: absolute;
   width: 295px;
   height: 75px;
-  left: 200px;
+  left: 30%;
   top: 17px;
 
 
 }
 
 .buttonadd {
-  left: 200px;
+  left: 30%;
   top: 107px;
 }
 
@@ -31,7 +31,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 347px;
+  left: 40%;
   top: 107px;
 }
 
@@ -39,7 +39,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 494px;
+  left: 50%;
   top: 107px;
 
 }
@@ -48,7 +48,7 @@ body {
   position: absolute;
   width: 130px;
   height: 39px;
-  left: 641px;
+  left: 60%;
   top: 107px;
 
 }
@@ -104,7 +104,7 @@ table {
   position: absolute;
   width: 1040px;
   height: 672px;
-  left: 200px;
+  left: 30%;
   top: 158px;
   background: #FFFFFF;
   border-radius: 8px;
@@ -253,7 +253,7 @@ footer {
   position: absolute;
   width: 1040px;
   height: 24px;
-  left: 200px;
+  left: 33%;
   top: 842px;
 }
 
@@ -317,7 +317,7 @@ author {
   width: 277px;
   height: 870px;
   left: 35%;
-  top: 57px;
+  top: 15px;
 
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -373,6 +373,8 @@ author {
 
 .addbutton {
 
+  position: absolute;
+
   height: 39px;
   width: 130px;
   left: 0px;
@@ -410,6 +412,7 @@ mark {
   width: 130px;
   left: 147px;
   top: 798px;
+
   border-radius: 8px;
   font-family: Graphik LCG;
   font-size: 14px;
