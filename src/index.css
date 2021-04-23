@@ -165,6 +165,28 @@ thead {
   top: 0px;
 }
 
+.thline {
+  /* line */
+
+  height: 16px;
+  width: 1px;
+  left: 78px;
+  top: 0px;
+  border-radius: 0px;
+
+
+  /* Borders */
+  background: #C5D0DB;
+  mix-blend-mode: normal;
+
+  /* Inside Auto Layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin-top: -16px;
+
+}
+
 tr {
   /* TableHeaderBox */
   display: flex;
@@ -460,7 +482,7 @@ th {
 
   word-wrap: break-word;
   font-family: Graphik LCG;
-  font-size: 13px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;

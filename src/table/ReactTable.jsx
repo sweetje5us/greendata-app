@@ -82,8 +82,12 @@ function Table({ columns, data, onSelect }) {
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                <>
+                  <th {...column.getHeaderProps()}>{column.render('Header')}<div className="thline"></div></th>
+
+                </>
               ))}
+
             </tr>
           ))}
 
@@ -135,27 +139,27 @@ const columns = [
     accessor: 'lastname',
   },
   {
-    Header: 'должность',
+    Header: 'Должность',
     accessor: 'position',
   },
   {
-    Header: 'дата рождения',
+    Header: 'Дата рождения',
     accessor: 'bdate',
   },
   {
-    Header: 'пол',
+    Header: 'Пол',
     accessor: 'sex',
   },
   {
-    Header: 'дата приема',
+    Header: 'Дата приема',
     accessor: 'hdate',
   },
   {
-    Header: 'дата увольнения',
+    Header: 'Дата увольнения',
     accessor: 'fdate',
   },
   {
-    Header: 'наличие прав',
+    Header: 'Права',
     accessor: 'drive_l',
   }
 ];

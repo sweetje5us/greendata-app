@@ -24,6 +24,7 @@ function getNewId() {
   return ++maxId;
 }
 
+
 class App extends Component {
   state = {
     items: [],
@@ -249,6 +250,7 @@ this.getItems();
         
         <Modal
           className="modalcustom"
+          id="modalAdd"
           isOpen={this.state.addModalIsOpen}
           onRequestClose={this.openAddModal}
           ariaHideApp={false}
